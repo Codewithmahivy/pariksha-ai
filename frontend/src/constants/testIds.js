@@ -1,0 +1,37 @@
+export const IDS = {
+  landing: {
+    heroCta: "landing-hero-cta",
+    adminLoginBtn: "landing-admin-login-btn",
+    candidateLoginBtn: "landing-candidate-login-btn",
+  },
+  auth: {
+    emailInput: "auth-email-input",
+    passwordInput: "auth-password-input",
+    fullNameInput: "auth-fullname-input",
+    submitBtn: "auth-submit-btn",
+    toggleModeBtn: "auth-toggle-mode-btn",
+    roleSelect: "auth-role-select",
+  },
+  admin: {
+    navDashboard: "admin-nav-dashboard",
+    navQuestions: "admin-nav-questions",
+    navBlueprints: "admin-nav-blueprints",
+    navExams: "admin-nav-exams",
+    navAI: "admin-nav-ai",
+    logoutBtn: "admin-logout-btn",
+    seedDemoBtn: "admin-seed-demo-btn",
+    aiGenerateBtn: "admin-ai-generate-btn",
+    createBlueprintBtn: "admin-create-blueprint-btn",
+    createExamBtn: "admin-create-exam-btn",
+    saveBlueprintBtn: "admin-save-blueprint-btn",
+    saveExamBtn: "admin-save-exam-btn",
+    monitorBtn: "admin-monitor-btn",
+  },
+  candidate: {
+    joinExamBtn: "candidate-join-exam-btn",
+    submitExamBtn: "candidate-submit-exam-btn",
+    optionBtn: "candidate-option-btn",
+    questionNavBtn: "candidate-question-nav-btn",
+    viewResultBtn: "candidate-view-result-btn",
+  },
+};

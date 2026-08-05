@@ -1,0 +1,140 @@
+{
+  "theme_strategy": "Dual Context Architecture: High-Contrast Dark Mode for Admin Command Center (Security & Monitoring) and High-Legibility Light Mode for Candidate Exam Interface (Focus & Clarity).",
+  "typography": {
+    "primary_heading": "Manrope",
+    "body": "IBM Plex Sans",
+    "mono": "IBM Plex Mono (for timestamps, encrypted IDs, and code blocks)",
+    "rules": [
+      "Headings (Size > 32px) MUST use tracking-tight.",
+      "Overlines/Labels MUST be Uppercase, text-xs, tracking-[0.2em].",
+      "Do NOT use Inter for headings.",
+      "Candidate exam questions must be highly legible: text-lg or text-xl, leading-relaxed, text-slate-900."
+    ]
+  },
+  "colors": {
+    "archetype": "ARCHETYPE 4: SWISS & HIGH-CONTRAST (Authority, Clarity, Truth)",
+    "admin_dashboard_dark": {
+      "background": "#09090B",
+      "surface": "#18181B",
+      "primary_accent": "#2563EB", 
+      "secondary_accent": "#002FA7",
+      "status_success": "#16A34A",
+      "status_warning": "#EAB308",
+      "status_danger": "#DC2626",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#A1A1AA"
+    },
+    "candidate_exam_light": {
+      "background": "#FAFAFA",
+      "surface": "#FFFFFF",
+      "primary_accent": "#2563EB",
+      "text_primary": "#0F172A",
+      "text_secondary": "#475569",
+      "border": "#E2E8F0"
+    },
+    "rules": [
+      "Functional color use only: reserve strong colors for status, alerts, and primary actions.",
+      "Never use pure #000000. Use tinted greys (e.g., slate or zinc).",
+      "Ensure text meets APCA contrast standards. Minimum 4.5:1 for normal text.",
+      "Hover states must be explicitly defined (e.g., hover:bg-slate-800 hover:text-white)."
+    ]
+  },
+  "visual_enhancers": {
+    "surfaces": {
+      "admin_cards": "Grid Borders (Technical Look): border-collapse style layout, border-r border-b border-border/40, flat backgrounds.",
+      "security_badges": "Retro-Futurism/Terminal Look: Monospace text, subtle green/blue glow, sharp 1px borders.",
+      "candidate_panel": "Neumorphism (Tactile) variant but flat: sharp 1px border to ground it, soft subtle shadow for elevation."
+    },
+    "textures": "Subtle noise overlay on Admin dashboard background to reduce digital flatness and add a 'secure terminal' feel."
+  },
+  "layouts": {
+    "admin_dashboard": {
+      "mode": "MODE B: High Density Grid (Dashboards / Analytics)",
+      "base": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 or gap-6",
+      "execution": "Every pixel utilized. Use h-full on children to stretch to match neighbors. Sharp edges, max 4px border-radius."
+    },
+    "candidate_exam": {
+      "mode": "Focused Reading Layout",
+      "base": "Three-column structure: Left sidebar (hidden on mobile), Center main content (max-w-4xl for optimal reading length), Right sidebar (Question Palette & Timer).",
+      "execution": "Generous Spacing (p-6 to p-12). Left-align questions and options for readability."
+    }
+  },
+  "components": {
+    "shadcn_ui_usage": [
+      "Tables, Select, Dropdowns, Dialogs, Tabs, Progress bars.",
+      "Use Shadcn calendar for date/time picking (Exam schedule).",
+      "Override default tablist height (h-9 to h-auto)."
+    ],
+    "custom_components": [
+      "Exam Timer: Fixed at top-right, monospaced, changes to Warning Yellow at 15 mins, Signal Red at 5 mins.",
+      "Question Navigator Palette: Grid of square buttons (col-span-1) indicating status (Answered: Green, Unanswered: Grey, Marked: Purple).",
+      "Security Badge: Component showing 'Encrypted Paper', 'Generated at <timestamp>' with locking icon."
+    ]
+  },
+  "motion": {
+    "rules": [
+      "Minimalist animations for Admin Dashboard (focus on data loading and micro-interactions).",
+      "Candidate Portal: ZERO distracting animations. Only instant feedback on option selection.",
+      "Paper Generation Visualization: Orchestrated sequence showing nodes connecting -> lock snapping closed."
+    ]
+  },
+  "accessibility": {
+    "rules": [
+      "All interactive elements MUST include a data-testid attribute (e.g., data-testid='submit-exam-button').",
+      "DO NOT use complete transparent backgrounds in headers or overlays.",
+      "Keyboard navigation is CRITICAL for the exam interface (Arrow keys to navigate options, Enter to select/next)."
+    ]
+  },
+  "media": {
+    "image_urls": {
+      "exam_context": [
+        {
+          "url": "https://images.unsplash.com/photo-1516042438821-0abd7a73c4b3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHwzfHxzdHVkZW50JTIwZm9jdXNlZCUyMHJlYWRpbmd8ZW58MHx8fHwxNzg1MTE1NzQ5fDA&ixlib=rb-4.1.0&q=85",
+          "description": "Student focused reading - use for candidate portal landing/login page."
+        }
+      ],
+      "admin_context": [
+        {
+          "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxkYXRhJTIwZGFzaGJvYXJkJTIwdWl8ZW58MHx8fHwxNzg1MTE1NzQ5fDA&ixlib=rb-4.1.0&q=85",
+          "description": "Data dashboard charts - use for admin login or promotional sections."
+        }
+      ],
+      "ai_generation_visualization": [
+        {
+          "url": "https://images.unsplash.com/photo-1644088379091-d574269d422f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhdGElMjBub2RlcyUyMG5ldHdvcmt8ZW58MHx8fHwxNzg1MTE1NzQ5fDA&ixlib=rb-4.1.0&q=85",
+          "description": "Abstract data nodes network - use as background for the AI Question Generation loading state."
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1644325349124-d1756b79dd42?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMGRhdGElMjBub2RlcyUyMG5ldHdvcmt8ZW58MHx8fHwxNzg1MTE1NzQ5fDA&ixlib=rb-4.1.0&q=85",
+          "description": "Blue abstract background with dots - use for encryption status screens."
+        }
+      ]
+    },
+    "icons": "Use lucide-react (default). For dense dashboard data tables, consider @phosphor-icons/react if needed."
+  },
+  "3d_libraries": {
+    "recommendation": "React Force Graph 3D or D3.js",
+    "usage": "Use specifically for the 'Paper generation engine visualization' to show the blueprint mapping to the fairness algorithm. Set background to transparent. DO NOT use 3D in the actual candidate exam view."
+  },
+  "instructions_to_main_agent": [
+    "You have .js files not .tsx files. Adapt all React/Tailwind/Shadcn implementations to standard modern JS.",
+    "Implement routing for two distinct contexts: Admin (/admin/*) and Candidate (/candidate/* or /exam/*).",
+    "Admin Dashboard must feel like a secure, high-tech command center. High contrast, dense data.",
+    "Candidate Exam Interface must feel like a clean, distraction-free sheet of paper. Extreme legibility.",
+    "Do not build complex components from scratch (like Datepickers); use Shadcn UI and customize via Tailwind classes.",
+    "Use Recharts for the Results & Analytics dashboard and live monitoring charts."
+  ],
+  "universal_guidelines_for_main_agent": [
+    "Do not converge toward generic, 'on distribution' outputs. Avoid the 'AI slop' aesthetic.",
+    "Create depth through layered design elements with z-index hierarchy, even in flat/dense designs.",
+    "You MUST NOT apply universal transitions (e.g., transition: all). Add transitions for specific interactive elements only.",
+    "You MUST NOT center align the app container (.App { text-align: center; }). This disrupts the human natural reading flow.",
+    "Always use modern button styles (sharp or slightly rounded for this context) with interaction animations.",
+    "NEVER use AI assistant Emoji characters (🤖, 🧠) for icons. Rely on clean SVG icons from lucide-react.",
+    "Every interaction needs micro-animations (hover states, focus states).",
+    "Use 2-3x more spacing than feels comfortable, except in specifically dense data tables.",
+    "Missing categories for images means you use the provided image_urls. NEVER use placeholder text for images.",
+    "Prioritize using pre-existing components from src/components/ui.",
+    "Use sonner for toasts, located in /app/src/components/ui/sonner.js (or .jsx)."
+  ]
+}

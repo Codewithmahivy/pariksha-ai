@@ -1,0 +1,24 @@
+{
+  "summary": "Frontend regression test for bug fix in /app/frontend/src/pages/admin/Exams.jsx (functional setBp to prevent 5s auto-refresh from resetting user's blueprint selection). Logged in as admin@neetai.com, navigated to /admin/exams, created a blueprint (TEST_BP_Regression) since none existed, opened Schedule Exam dialog, selected blueprint, waited 7.5s past the 5s poll interval, and verified the trigger value persisted. Then saved the exam successfully (toast shown, card rendered), and deleted it for cleanup. All flows passed.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Exam & Blueprint dialogs", "issues": ["A11y warning: DialogContent missing Description/aria-describedby (Radix warning in console). Non-blocking."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Consider adding aria-describedby / DialogDescription to Radix DialogContent components to silence the a11y warning and improve screen-reader support."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "not tested (frontend-only scope)", "frontend": "100%"},
+  "seed_data_creation": "Created blueprint 'TEST_BP_Regression' (still present - only exam TEST_Regression_Exam was cleaned up). Consider removing the leftover blueprint if desired.",
+  "should_call_test_agent_after_fix": false,
+  "should_main_agent_self_test": false,
+  "test_credentials": "admin@neetai.com / Admin@123",
+  "context_for_next_testing_agent": "Bug fix for stale-closure blueprint reset in Exams.jsx is verified working. Blueprint selection persists across the 5s auto-refresh poll. Exam create+delete flow works. One leftover seed record: blueprint 'TEST_BP_Regression'.",
+  "rca_of_the_issue": "Original bug root cause was a stale closure in the 5s setInterval polling load(): the initial captured `bp === ''` caused every subsequent poll to re-set bp to blueprints[0].id, overwriting user selection. Fix uses functional updater setBp((current) => current || b.data.items[0]?.id || '') which reads latest state and only assigns a default when nothing is picked yet. Regression test passed: selected value persisted after >7s wait."
+}

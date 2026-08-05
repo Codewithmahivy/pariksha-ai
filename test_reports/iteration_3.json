@@ -1,0 +1,26 @@
+{
+  "summary": "Frontend-only regression for empty-blueprints UX fix on /admin/exams. All 8 scripted flows passed: (1) empty-DB warning card shown with disabled Save and no bp-select; (2) 'Create a blueprint' link navigates to /admin/blueprints and closes dialog; (3) blueprint FIX_TEST_BP created via UI; (4) reopening Schedule Exam shows bp-select and enables Save; (5) exam FIX_TEST_EXAM scheduled with 'Exam scheduled' toast (no 'Blueprint not found'); (6) new exam card appears with 'scheduled' status; (7) exam and blueprint deleted via trash icons; (8) regression: warning card reappears with Save disabled when blueprints empty again.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Schedule Exam & New Blueprint dialogs", "issues": ["A11y console warning: Missing `Description` or `aria-describedby={undefined}` for DialogContent. Add DialogDescription (or aria-describedby) inside DialogHeader for both dialogs."]},
+      {"screen": "Admin Overview", "issues": ["Recharts console warnings: 'width(-1) and height(-1) of chart should be greater than 0' - ResponsiveContainer parent has 0 size on first render."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "(Low) Add DialogDescription to Schedule Exam and New Blueprint DialogContent to silence accessibility warnings.",
+    "(Low) Fix Recharts container sizing on Admin Overview (parent needs explicit min height/width)."
+  ],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "Created and then deleted FIX_TEST_BP and FIX_TEST_EXAM via UI. DB left clean (blueprints=0, exams=0) as required.",
+  "should_call_test_agent_after_fix": false,
+  "should_main_agent_self_test": true,
+  "test_credentials": "admin@neetai.com / Admin@123",
+  "context_for_next_testing_agent": "Empty-blueprint UX fix verified working end-to-end. DB is clean. Only remaining low-priority items are a11y (DialogDescription) and Recharts sizing warnings.",
+  "rca_of_the_issue": "Original 'Blueprint not found' bug caused by empty DB + form allowing empty blueprint_id submission. Fix (conditional warning card + disabled Save + save() guards) is confirmed effective."
+}
